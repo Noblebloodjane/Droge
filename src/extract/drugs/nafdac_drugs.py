@@ -41,14 +41,16 @@ for col in table_column:
 
 print(drug_cols)
 
-# Process only the drug keys
-for drug_name in Drugs.keys():
+# Rows
+for drug in Drugs:
+   for drug in Drugs:
+    # Initial search
     search_nafdac.clear()
-    search_nafdac.send_keys(drug_name)
+    search_nafdac.send_keys(drug)
     search_nafdac.send_keys(Keys.RETURN)
     time.sleep(5)
 
-    # Process all pages of results for the current drug key
+    # Dealing with medication rows
     while True:
         table_drug = driver.find_element(By.ID, 'DataTables_Table_0')
         table_rows = driver.find_elements(By.TAG_NAME, 'tr')
@@ -62,7 +64,7 @@ for drug_name in Drugs.keys():
                 temp_df = pd.DataFrame([row_data], columns=drug_cols)
                 drug_data_df = pd.concat([drug_data_df, temp_df], ignore_index=True)
 
-        # Check for the next button
+     # Check for the next button
         try:
             next_button = driver.find_element(By.XPATH, '/html/body/main/div/section/div/div[3]/div[2]/div/ul/li[9]/a')
 
@@ -74,5 +76,8 @@ for drug_name in Drugs.keys():
             print(f'Something happened: {str(e)}')
             break
 
+driver.quit()
 print(drug_data_df.head())
 drug_data_df.to_csv('drug_data_Nf.csv', index=False)
+
+# So fix the loop and fix what happens to nulls
