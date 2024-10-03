@@ -14,7 +14,7 @@ driver = webdriver.Firefox()
 url_nafdac = 'https://greenbook.nafdac.gov.ng/'
 driver.get(url_nafdac)
 
-# id for search box
+# ID for search box
 search_id = "search_product"
 search_nafdac = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.ID, search_id))
@@ -33,8 +33,7 @@ for col in table_column:
 print(drug_cols)
 
 # Loop through each drug and search
-for key in Drugs.keys():  
-    drug = key 
+for drug in Drugs.keys():  
     
     # Scroll to search box to ensure it is in view
     driver.execute_script("arguments[0].scrollIntoView();", search_nafdac)
