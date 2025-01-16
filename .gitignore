@@ -6,3 +6,5 @@ venvDrogeELT/
 src/
 logs/
 drug_data_Nf.csv
+main.py  
+requirements.txt  
