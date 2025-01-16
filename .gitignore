@@ -2,10 +2,7 @@ docker-compose.yaml
 config.ini
 .env
 /env
-/logs
-/src
-/venvDrogeELT
+venvDrogeELT/
+src/
+logs/
 drug_data_Nf.csv
-main.py
-requirements.txt
-tempstore.py
